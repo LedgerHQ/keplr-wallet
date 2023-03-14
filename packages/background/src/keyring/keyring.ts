@@ -85,6 +85,7 @@ export class KeyRing {
     private readonly kvStore: KVStore,
     private readonly ledgerKeeper: LedgerService,
     private readonly keystoneService: KeystoneService,
+    private readonly vaultService: VaultService,
     private readonly crypto: CommonCrypto
   ) {
     this.loaded = false;
@@ -94,7 +95,7 @@ export class KeyRing {
 
   public static getTypeOfKeyStore(
     keyStore: Omit<KeyStore, "crypto">
-  ): "mnemonic" | "privateKey" | "ledger" | "keystone" {
+  ): "mnemonic" | "privateKey" | "ledger" | "keystone" | "vault" {
     const type = keyStore.type;
     if (type == null) {
       return "mnemonic";

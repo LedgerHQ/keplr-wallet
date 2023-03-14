@@ -3,6 +3,7 @@ import { MessageRequester, Router } from "@keplr-wallet/router";
 import * as PersistentMemory from "./persistent-memory/internal";
 import * as Chains from "./chains/internal";
 import * as Ledger from "./ledger/internal";
+import * as Vault from "./vault/internal";
 import * as Keystone from "./keystone/internal";
 import * as KeyRing from "./keyring/internal";
 import * as SecretWasm from "./secret-wasm/internal";
@@ -19,6 +20,7 @@ export * from "./persistent-memory";
 export * from "./chains";
 export * from "./ledger";
 export * from "./keystone";
+export * from "./vault";
 export * from "./keyring";
 export * from "./secret-wasm";
 export * from "./tx";
@@ -97,6 +99,10 @@ export function init(
 
   const keystoneService = new Keystone.KeystoneService(
     storeCreator("keystone")
+  );
+
+  const vaultService = new Vault.VaultService(
+    storeCreator("vault")
   );
 
   const keyRingService = new KeyRing.KeyRingService(

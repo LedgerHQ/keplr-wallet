@@ -48,6 +48,7 @@ import Long from "long";
 import { Buffer } from "buffer/";
 import { trimAminoSignDoc } from "./amino-sign-doc";
 import { KeystoneService } from "../keystone";
+import { VaultService } from "../vault";
 import { RequestICNSAdr36SignaturesMsg } from "./messages";
 import { PubKeySecp256k1 } from "@keplr-wallet/crypto";
 import { closePopupWindow } from "@keplr-wallet/popup";
@@ -72,6 +73,7 @@ export class KeyRingService {
     permissionService: PermissionService,
     ledgerService: LedgerService,
     keystoneService: KeystoneService,
+    vaultService: VaultService,
     analyticsSerice: AnalyticsService
   ) {
     this.interactionService = interactionService;
@@ -83,6 +85,7 @@ export class KeyRingService {
       this.kvStore,
       ledgerService,
       keystoneService,
+      vaultService,
       this.crypto
     );
 
